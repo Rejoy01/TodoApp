@@ -20,3 +20,26 @@ exports.createTask = async(req,res)=>{
         })
     }
 }
+
+exports.getTask = async(req,res)=>{
+   TodoModel.find()
+   .then(result => res.json(result))
+   .catch(err => res.json(err))
+    
+}
+
+exports.updateTask = async(req,res)=>{
+    const {id}  = req.params;
+    TodoModel.findByIdAndUpdate({_id:id},{done:true})
+    .then(result => res.json(result))
+    .catch(err => res.json(err.message))
+
+}
+
+exports.deleteTask = (req,res)=>{
+    const {id} = req.params
+    TodoModel.findByIdAndDelete({_id:id})
+    .then(result => res.json(result))
+    .catch(err => res.json(err.message))
+
+}

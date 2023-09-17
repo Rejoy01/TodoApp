@@ -8,7 +8,9 @@ const Create = () => {
 
   const handleAdd = ()=>{
       axios.post('http://localhost:4000/add/create',{ task : task})
-      .then(result => console.log(result))
+      .then(result => {
+        location.reload()
+      })
       .catch(err => console.log(err.message))
   }
 
